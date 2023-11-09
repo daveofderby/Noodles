@@ -1,15 +1,15 @@
 const express = require("express");
 const multer = require("multer");
-const { storage } = require("../cloudinary");
+const { storage } = require("../cloudinary/index.js");
 const upload = multer({ storage: storage });
 const router = express.Router();
-const campgrounds = require("../controllers/campgrounds");
-const catchAsync = require("../utils/catchAsync");
-const ExpressError = require("../utils/ExpressError");
-const Campground = require("../models/campground");
+const campgrounds = require("../controllers/campgrounds.js");
+const catchAsync = require("../utils/catchAsync.js");
+const ExpressError = require("../utils/ExpressError.js");
+const Campground = require("../models/campground.js");
 
 const { campgroundSchema } = require("../schemas.js");
-const { isLoggedIn } = require("../middleware");
+const { isLoggedIn } = require("../middleware.js");
 
 // Middleware ---------------
 

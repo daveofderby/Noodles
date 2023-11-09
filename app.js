@@ -18,7 +18,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 
 const userRoutes = require("./routes/users");
-const campgroundRoutes = require("./routes/campgrounds");
+const noodleRoutes = require("./routes/noodles");
 const reviewRoutes = require("./routes/reviews");
 
 const MongoStore = require("connect-mongo");
@@ -144,7 +144,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", userRoutes);
-app.use("/campgrounds", campgroundRoutes);
+app.use("/noodles", noodleRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
