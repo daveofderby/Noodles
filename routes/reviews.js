@@ -3,7 +3,7 @@ const router = express.Router({ mergeParams: true });
 const reviews = require("../controllers/reviews");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
-const Campground = require("../models/campground");
+const Noodles = require("../models/noodles");
 const Review = require("../models/review");
 const { reviewSchema } = require("../schemas.js");
 const { isLoggedIn } = require("../middleware");
@@ -27,7 +27,7 @@ const isAuthor = async (req, res, next) => {
   if (!review.author.equals(req.user._id)) {
     if (req.user.username != "Admin") {
       req.flash("error", "You do not have permission to do that!");
-      return res.redirect(`/campgrounds/${id}`);
+      return res.redirect(`/noodles/${id}`);
     }
   }
   next();

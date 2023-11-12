@@ -1,0 +1,107 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+  <h1 class="text-center">New Noodle Packet</h1>
+  <div class="col-10 offset-1 mb-3">
+    <form
+      class="d-inline validated-form"
+      action="/noodles"
+      method="POST"
+      enctype="multipart/form-data"
+      novalidate
+    >
+    <div class="mb-3">
+      <label class="form-label" for="title">Title of Noodles</label>
+      <input
+        class="form-control"
+        type="text"
+        id="title"
+        name="noodles[title]"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="weight">Product Weight</label>
+      <div class="input-group">
+        <span class="input-group-text" id="weight-label">Grams</span>
+        <input
+          type="text"
+          class="form-control"
+          id="weight"
+          placeholder="0.00"
+          name="noodles[weight]"
+          aria-label="weight"
+          aria-describedby="weight-label"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="shop">Shop bought from</label>
+      <input
+        class="form-control"
+        type="text"
+        id="shop"
+        name="noodles[shop]"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location of Production</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="noodles[location]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <label for="formFileMultiple" class="form-label"
+            >Images</label
+          >
+          <input
+            class="form-control"
+            type="file"
+            name="images"
+            id="formFileMultiple"
+            multiple
+          />
+        </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Product Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">£</span>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="0.00"
+            name="noodles[price]"
+            aria-label="price"
+            aria-describedby="price-label"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <input
+          class="form-control"
+          type="text"
+          id="description"
+          name="noodles[description]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <button class="card-link btn btn-primary">Submit</button>
+    </form>
+    <a class="card-link btn btn-warning" href="/noodles/">Cancel</a>
+  </div>
+</div>

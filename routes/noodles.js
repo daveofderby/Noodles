@@ -3,18 +3,18 @@ const multer = require("multer");
 const { storage } = require("../cloudinary/index.js");
 const upload = multer({ storage: storage });
 const router = express.Router();
-const campgrounds = require("../controllers/campgrounds.js");
+const noodles = require("../controllers/noodles.js");
 const catchAsync = require("../utils/catchAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
-const Campground = require("../models/campground.js");
+const Noodles = require("../models/noodles.js");
 
-const { campgroundSchema } = require("../schemas.js");
+const { noodlesSchema } = require("../schemas.js");
 const { isLoggedIn } = require("../middleware.js");
 
 // Middleware ---------------
 
-const validateCampground = (req, res, next) => {
-  const { error } = campgroundSchema.validate(req.body);
+const validateNoodles = (req, res, next) => {
+  const { error } = noodlesSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
@@ -25,11 +25,11 @@ const validateCampground = (req, res, next) => {
 
 const isAuthor = async (req, res, next) => {
   const { id } = req.params;
-  const campground = await Campground.findById(id);
-  if (!campground.author.equals(req.user._id)) {
+  const noodles = await Noodles.findById(id);
+  if (!noodles.author.equals(req.user._id)) {
     if (req.user.username != "Admin") {
       req.flash("error", "You do not have permission to do that!");
-      return res.redirect(`/campgrounds/${campground._id}`);
+      return res.redirect(`/noodles/${noodles._id}`);
     }
   }
   next();
@@ -39,28 +39,28 @@ const isAuthor = async (req, res, next) => {
 
 router
   .route("/")
-  .get(catchAsync(campgrounds.index))
+  .get(catchAsync(noodles.index))
   .post(
     isLoggedIn,
     upload.array("images"),
-    validateCampground,
-    catchAsync(campgrounds.addRecord)
+    validateNoodles,
+    catchAsync(noodles.addRecord)
   );
 
-router.get("/new", isLoggedIn, campgrounds.newRecord);
+router.get("/new", isLoggedIn, noodles.newRecord);
 
 router
   .route("/:id")
-  .get(catchAsync(campgrounds.showRecord))
+  .get(catchAsync(noodles.showRecord))
   .put(
     isLoggedIn,
     isAuthor,
     upload.array("images"),
-    validateCampground,
-    catchAsync(campgrounds.updateRecord)
+    validateNoodles,
+    catchAsync(noodles.updateRecord)
   )
-  .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteRecord));
+  .delete(isLoggedIn, isAuthor, catchAsync(noodles.deleteRecord));
 
-router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(campgrounds.editRecord));
+router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(noodles.editRecord));
 
 module.exports = router;
