@@ -7,7 +7,6 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res, next) => {
   const noodles = await Noodles.find({}).populate("author");
-  console.log(noodles);
   res.render("noodles/index", { noodles });
 };
 
