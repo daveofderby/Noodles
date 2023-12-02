@@ -145,7 +145,7 @@ app.use((req, res, next) => {
 
 app.use("/", userRoutes);
 app.use("/noodles", noodleRoutes);
-app.use("/campgrounds/:id/reviews", reviewRoutes);
+app.use("/noodles/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
   res.render("home");
