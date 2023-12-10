@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
   body: String,
+  dateAdded: Date,
+  shop: String,
+  cost: Number,
   rating: Number,
   author: {
     type: Schema.Types.ObjectId,

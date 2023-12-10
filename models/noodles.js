@@ -17,7 +17,7 @@ const NoodlesSchema = new Schema(
     title: String,
     images: [ImageSchema],
     weight: Number,
-    shop: String,
+  
     geometry: {
       type: {
         type: String,
@@ -29,7 +29,7 @@ const NoodlesSchema = new Schema(
         required: true,
       },
     },
-    price: Number,
+   
     description: String,
     location: String,
     author: {

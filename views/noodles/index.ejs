@@ -4,20 +4,20 @@
 <div class="d-flex justify-content-around">
   <div class="row mx-0">
     <% for (let noodle of noodles){%>
-    <div class="col-md-12 col-lg-6 col-xl-4">
+    <div class="col-12 col-lg-6 col-xl-4">
       <div class="card mb-2">
         <div class="row m-0">
-          <div class="col-md-4">
+          <div class="col-4">
             <%if(noodle.images.length) {%>
             <!-- <img class="img-fluid" alt="" src="<%=noodle.images[0].url%>" /> -->
             <img
-              class="img-fluid w-100 mt-2"
+              class="img-fluid w-200 mt-2"
               src="<%= noodle.images[0].thumbnail %>"
               alt="..."
             />
             <% } %>
           </div>
-          <div class="col-md-8">
+          <div class="col-8">
             <div class="card-body">
               <h5 class="card-title"><%= noodle.title %></h5>
               <p class="card-text">Price £<%= noodle.price %></p>

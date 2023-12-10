@@ -26,8 +26,6 @@ const Joi = BaseJoi.extend(extension);
 module.exports.noodlesSchema = Joi.object({
   noodles: Joi.object({
     title: Joi.string().required().escapeHTML(),
-    shop: Joi.string().required().escapeHTML(),
-    price: Joi.number().required().min(0),
     weight: Joi.number().required().min(0),
     location: Joi.string().required().escapeHTML(),
     description: Joi.string().required().escapeHTML(),
@@ -38,6 +36,8 @@ module.exports.noodlesSchema = Joi.object({
 module.exports.reviewSchema = Joi.object({
   review: Joi.object({
     rating: Joi.number().required().min(1).max(5),
+    shop: Joi.string().required().escapeHTML(),
+    price: Joi.number().required().min(0),
     body: Joi.string().required().escapeHTML(),
   }).required(),
 });
