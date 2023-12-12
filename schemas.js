@@ -28,7 +28,7 @@ module.exports.noodlesSchema = Joi.object({
     title: Joi.string().required().escapeHTML(),
     weight: Joi.number().required().min(0),
     location: Joi.string().required().escapeHTML(),
-    description: Joi.string().required().escapeHTML(),
+    description: Joi.string().empty(""),
   }).required(),
   deleteImages: Joi.array(),
 });

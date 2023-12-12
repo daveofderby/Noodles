@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "YelpCamp",
+    folder: "Noodles",
     allowedFormats: ["jpeg", "png", "jpg"],
     // format: async (req, file) => "png", // supports promises as well
     // public_id: (req, file) => "computed-filename-using-request2",

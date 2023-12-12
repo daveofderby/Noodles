@@ -10,6 +10,10 @@ ImageSchema.virtual("thumbnail").get(function () {
   return this.url.replace("/upload", "/upload/w_200");
 });
 
+ImageSchema.virtual("square").get(function () {
+  return this.url.replace("/upload", "/upload/t_Square");
+});
+
 const opts = { toJSON: { virtuals: true } };
 
 const NoodlesSchema = new Schema(
@@ -17,7 +21,7 @@ const NoodlesSchema = new Schema(
     title: String,
     images: [ImageSchema],
     weight: Number,
-  
+
     geometry: {
       type: {
         type: String,
@@ -29,7 +33,7 @@ const NoodlesSchema = new Schema(
         required: true,
       },
     },
-   
+
     description: String,
     location: String,
     author: {
@@ -49,9 +53,7 @@ const NoodlesSchema = new Schema(
 NoodlesSchema.virtual("properties.popUpMarkup").get(function () {
   return `<a href="/noodles/${this._id}">
   <h4>${this.title}</h4></a>
-  <p>${this.location}<br>
-  <img class="img-thumbnail" src="${this.images[0].thumbnail}" alt="..."
-  /></p>`;
+  <p>${this.location}</p>`;
 });
 
 // Midleware

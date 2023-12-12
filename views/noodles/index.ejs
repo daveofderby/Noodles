@@ -1,26 +1,23 @@
 <% layout('layouts/boilerplate')%>
 <div id="cluster-map"></div>
 <h1>Oodles of Noodles</h1>
-<div class="d-flex justify-content-around">
+<div class="container">
   <div class="row mx-0">
     <% for (let noodle of noodles){%>
-    <div class="col-12 col-lg-6 col-xl-4">
-      <div class="card mb-2">
-        <div class="row m-0">
+    <div class="col-12 col-md-6 col-xl-4">
+      <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <h6 class="card-header text-light bg-dark"><%= noodle.title %></h6>
           <div class="col-4">
             <%if(noodle.images.length) {%>
-            <!-- <img class="img-fluid" alt="" src="<%=noodle.images[0].url%>" /> -->
             <img
-              class="img-fluid w-200 mt-2"
-              src="<%= noodle.images[0].thumbnail %>"
+              class="w-200 img-fluid"
+              src="<%= noodle.images[0].square %>"
               alt="..."
-            />
-            <% } %>
+            /><% } %>
           </div>
           <div class="col-8">
             <div class="card-body">
-              <h5 class="card-title"><%= noodle.title %></h5>
-              <p class="card-text">Price £<%= noodle.price %></p>
               <p class="card-text fs-6 fw-light"><%= noodle.location%></p>
               <a class="btn btn-primary stretched-link" href="/noodles/<%=noodle._id%>"
                 >More info...</a
@@ -30,12 +27,13 @@
         </div>
       </div>
     </div>
-    <% }%>
+    <% } %>
+
+    <script>
+      const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+      const noodles = { features: <%- JSON.stringify(noodles) %>}
+    </script>
+
+    <script src="/javascripts/clusterMap.js"></script>
   </div>
 </div>
-<script>
-  const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-  const noodles = { features: <%- JSON.stringify(noodles) %>}
-</script>
-
-<script src="/javascripts/clusterMap.js"></script>

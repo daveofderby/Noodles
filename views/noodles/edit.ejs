@@ -51,18 +51,7 @@
           <div class="valid-feedback">Looks good!</div>
         </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="shop">Shop bought from</label>
-        <input
-          class="form-control"
-          type="text"
-          id="shop"
-          name="noodles[shop]"
-          value="<%= noodles.shop  %>"
-          required
-        />
-        <div class="valid-feedback">Looks good!</div>
-      </div>
+
       <div class="mb-3">
         <div class="mb-3">
           <label for="formFileMultiple" class="form-label">Images</label>
@@ -75,24 +64,7 @@
           />
         </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="price">Noodle Price</label>
-        <div class="input-group">
-          <span class="input-group-text" id="price-label">£</span>
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            placeholder="0.00"
-            name="noodles[price]"
-            aria-label="price"
-            aria-describedby="price-label"
-            value="<%= noodles.price %>"
-            required
-          />
-          <div class="valid-feedback">Looks good!</div>
-        </div>
-      </div>
+
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
         <input
@@ -101,7 +73,6 @@
           id="description"
           name="noodles[description]"
           value="<%= noodles.description %>"
-          required
         />
         <div class="valid-feedback">Looks good!</div>
       </div>
