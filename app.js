@@ -1,3 +1,4 @@
+// Checks the ".env" file content if the enviornment is not equal to production.
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -25,17 +26,20 @@ const MongoStore = require("connect-mongo");
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/noodles";
 
+// Opens default connection to the mongo database via mongoose library
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
+// Connects to the mongo database via mongoose library
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database Connected");
 });
 
+// Creates amd Express application
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -82,6 +86,7 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+// Helmet helps secure Express apps by setting HTTP response headers.
 app.use(helmet());
 
 const scriptSrcUrls = [
@@ -108,6 +113,7 @@ const connectSrcUrls = [
   "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [];
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -129,6 +135,7 @@ app.use(
   })
 );
 
+// Passport is Express-compatible authentication middleware for Node.js.
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

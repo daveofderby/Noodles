@@ -5,7 +5,7 @@ const reviewSchema = new Schema({
   body: String,
   dateAdded: Date,
   shop: String,
-  cost: Number,
+  price: Number,
   rating: Number,
   author: {
     type: Schema.Types.ObjectId,

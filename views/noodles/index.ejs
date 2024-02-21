@@ -18,7 +18,12 @@
           </div>
           <div class="col-8">
             <div class="card-body">
-              <p class="card-text fs-6 fw-light"><%= noodle.location%></p>
+              <p class="card-text fs-6 fw-light">
+                <strong>Description: </strong><%= noodle.description%>
+              </p>
+              <p class="card-text fs-6 fw-light">
+                <strong>Location of Production: </strong><%= noodle.location%>
+              </p>
               <a class="btn btn-primary stretched-link" href="/noodles/<%=noodle._id%>"
                 >More info...</a
               >

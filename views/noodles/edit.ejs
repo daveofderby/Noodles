@@ -22,6 +22,17 @@
         <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <input
+          class="form-control"
+          type="text"
+          id="description"
+          name="noodles[description]"
+          value="<%= noodles.description %>"
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
         <label class="form-label" for="location">Location</label>
         <input
           class="form-control"
@@ -65,17 +76,6 @@
         </div>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <input
-          class="form-control"
-          type="text"
-          id="description"
-          name="noodles[description]"
-          value="<%= noodles.description %>"
-        />
-        <div class="valid-feedback">Looks good!</div>
-      </div>
       <div class="input-group mb-3">
         <% noodles.images.forEach(( img, i) => { %>
         <div class="input-group-text">
