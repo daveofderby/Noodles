@@ -32,7 +32,7 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-secondary"><%= noodles.location %></li>
-        <li class="list-group-item">£<%= noodles.price %> per night</li>
+        <li class="list-group-item">£<%= noodles.price %> grams</li>
       </ul>
       <% if(currentUser && (noodles.author.equals(currentUser._id) || currentUser.username==="Admin" )) { %>
       <div class="card-body">
